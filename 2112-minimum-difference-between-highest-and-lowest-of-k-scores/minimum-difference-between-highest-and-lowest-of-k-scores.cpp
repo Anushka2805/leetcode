@@ -7,10 +7,13 @@ public:
         }
         sort(nums.begin(), nums.end());
         int ans = INT_MAX;
-        for (int p = 0; p + k - 1 < n; p++) {
-            int j = p + k - 1;
-            int diff = nums[p + k - 1] - nums[p];
+        int i = 0;
+        int j = k - 1;
+        while (j < n) {
+            int diff = nums[j] - nums[i];
             ans = min(ans, diff);
+            i++;
+            j++;
         }
         return ans;
     }
