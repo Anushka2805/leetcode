@@ -1,6 +1,6 @@
 class Solution {
 public:
-    // using maxheap
+    // using minheap
     //tc = n logk
     int findKthLargest(vector<int>& nums, int k) {
         priority_queue<int, vector<int>, greater<int>> pq;
