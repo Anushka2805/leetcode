@@ -1,17 +1,15 @@
 class Solution {
 public:
+    // using maxheap
+    //tc = n logk
     int findKthLargest(vector<int>& nums, int k) {
-        priority_queue<int> pq;
+        priority_queue<int, vector<int>, greater<int>> pq;
         for (int i = 0; i < nums.size(); i++) {
             pq.push(nums[i]);
+            if (pq.size() > k) {
+                pq.pop();
+            }
         }
-        int count = 0;
-        int num = 0;
-        while (count < k) {
-            num = pq.top();
-            pq.pop();
-            count++;
-        }
-        return num;
+        return pq.top();
     }
 };
