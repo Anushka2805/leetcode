@@ -1,5 +1,6 @@
 class Solution {
 public:
+//tc = nlogn
     int minimumCost(vector<int>& nums) {
         vector<int> newNum = nums;
         sort(newNum.begin() + 1, newNum.end());
