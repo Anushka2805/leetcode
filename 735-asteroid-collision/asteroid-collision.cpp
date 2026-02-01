@@ -5,15 +5,19 @@ public:
         vector<int> ans;
         int n = asteroids.size();
         for (int a : asteroids) {
+            //a is neg
             while (!st.empty() && st.top() > 0 && a < 0) {
+                //value of a larger than st top
                 if (abs(st.top()) < abs(a)) {
                     st.pop();
                     continue;
-                } else if (abs(st.top()) == abs(a)) {
+                }//both equal so destroying both
+                 else if (abs(st.top()) == abs(a)) {
                     a = 0;
                     st.pop();
                     continue;
-                } else {
+                }//negative one has smaller value then prev one so ommit it
+                 else {
                     a = 0;
                     break;
                 }
