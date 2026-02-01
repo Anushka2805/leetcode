@@ -1,10 +1,17 @@
 class Solution {
 public:
-//tc = nlogn
+//tc = n
     int minimumCost(vector<int>& nums) {
-        vector<int> newNum = nums;
-        sort(newNum.begin() + 1, newNum.end());
-        int sum = newNum[0] + newNum[1] + newNum[2];
-        return sum;
+        int smallest = INT_MAX;
+        int smaller = INT_MAX;
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] < smallest) {
+                smaller = smallest;
+                smallest = nums[i];
+            } else if (nums[i] < smaller) {
+                smaller = nums[i];
+            }
+        }
+        return nums[0] + smaller + smallest;
     }
 };
