@@ -1,19 +1,27 @@
 class Solution {
 public:
-    // left side mei A
-    // right side mei B
-    // no A should be there in right side of B
     int minimumDeletions(string s) {
-        stack<char> st;
-        int count = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (!st.empty() && s[i] == 'a' && st.top() == 'b') {
-                st.pop();
-                count++;
-            } else {
-                st.push(s[i]);
+        int n = s.length();
+        vector<int> leftB(n, 0);
+        vector<int> rightA(n, 0);
+        int b = 0;
+        for (int i = 0; i < n; i++) {
+            leftB[i] = b;
+            if (s[i] == 'b') {
+                b++;
             }
         }
-        return count;
+        int a = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            rightA[i] = a;
+            if (s[i] == 'a') {
+                a++;
+            }
+        }
+        int deletions = INT_MAX;
+        for (int i = 0; i < n; i++) {
+            deletions = min(deletions, leftB[i] + rightA[i]);
+        }
+        return deletions;
     }
 };
