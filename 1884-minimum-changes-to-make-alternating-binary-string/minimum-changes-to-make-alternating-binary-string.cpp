@@ -1,7 +1,12 @@
 class Solution {
 public:
+//we ll have 2 cases
+//10101010....
+//01010101..
+//so we will check string by both comb and find out which will give us min operations
     int f(string s, char st) {
         int count = 0;
+        //checking the string start with both 0 and 1
         if (s[0] != st) {
             s[0] = st;
             count++;
