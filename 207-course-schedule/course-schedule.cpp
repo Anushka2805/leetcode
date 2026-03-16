@@ -5,10 +5,10 @@ public:
         // 1. making adj list
         vector<int> adj[numCourses];
         for(auto &it : prerequisites){
-            // u -> v
+            // v -> u
             int u = it[0];   
             int v = it[1];
-            adj[u].push_back(v);
+            adj[v].push_back(u);
         }
         //2. updating the indegree
         vector<int> indegree(numCourses,0);
